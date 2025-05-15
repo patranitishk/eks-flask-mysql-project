@@ -11,7 +11,14 @@
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        .messages p {
+        background-color: #2c2c2c;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+        color: #fff;
+        font-size: 1rem;
+      }    
         body {
             background-color: #121212;
             color: #e0e0e0;
@@ -125,9 +132,11 @@
         <h2>I had the privilege of learning from Reyaz Shaik, an experienced AWS Solutions Architect. His expert guidance in Cloud Technologies and DevOps methodologies helped me build a strong foundation in IT infrastructure and complete my DevOps course successfully.</h2>
         <div class="messages">
 
-            {% for message in messages %}
-                <p>{{ message[0] }}</p>
-            {% endfor %}
+           {% for message in messages %}
+        {% if message and message[0] %}
+            <p>{{ message[0] }}</p>
+        {% endif %}
+    {% endfor %}
         </div>
 
         <form id="messageForm">
