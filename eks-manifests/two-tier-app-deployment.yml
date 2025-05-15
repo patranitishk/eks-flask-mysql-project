@@ -20,13 +20,12 @@ spec:
           imagePullPolicy: Always
           env:
             - name: MYSQL_HOST
-              value: mysql          # this is your mysql's service clusture IP, Make sure to change it with yours
+              value: mysql
             - name: MYSQL_PASSWORD
               value: "admin"
             - name: MYSQL_USER
-              value: "root"
+              value: "admin"          # ✅ FIXED HERE
             - name: MYSQL_DB
               value: "mydb"
           ports:
             - containerPort: 5000
-          
