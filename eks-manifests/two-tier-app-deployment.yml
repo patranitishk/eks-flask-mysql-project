@@ -18,14 +18,18 @@ spec:
         - name: two-tier-app
           image: nitishkn/flask-app:v2
           imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
           env:
             - name: MYSQL_HOST
               value: mysql
-            - name: MYSQL_PASSWORD
-              value: "admin"
-            - name: MYSQL_USER
-              value: "admin"          # ✅ FIXED HERE
             - name: MYSQL_DB
               value: "mydb"
-          ports:
-            - containerPort: 5000
+            - name: MYSQL_USER
+              value: "admin"
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret        # same secret used by MySQL
+                  key: MYSQL_ROOT_PASSWORD  # base‑64 “admin”
+
